@@ -26,6 +26,7 @@ export const BestPlaceNearbyWrapper = styled.div `
         font-size: 1.7em;
         color: #0d26f2bd;
         font-weight: 800;
-        margin: 0 10px 10px;
+        margin: 0 10px;
     }
+    
 `

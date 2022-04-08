@@ -1,5 +1,5 @@
 import { WelcomeMessageWrapper, BestPlaceNearbyWrapper } from "./styles";
-import { IoAmericanFootballOutline}  from "react-icons/io5"
+import { IoThumbsUpSharp }  from "react-icons/io5"
 
     export const WelcomeMessage = () => (
 
@@ -9,7 +9,7 @@ import { IoAmericanFootballOutline}  from "react-icons/io5"
     <BestPlaceNearbyWrapper>
         <p class = "bestplace">best place</p>
         <p class = "nearby">nearby</p>
-        <IoAmericanFootballOutline/>
+        <IoThumbsUpSharp/>
     </BestPlaceNearbyWrapper></>
 
 

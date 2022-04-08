@@ -1,10 +1,10 @@
 import { NameWrapper, ProfileWrapper } from "./styles";
-import { IoAccessibility }  from "react-icons/io5"
+import { IoPerson }  from "react-icons/io5"
 
 export const ProfileInfo = () => (
 
     <><ProfileWrapper>
-        <IoAccessibility />
+        <IoPerson/>
     </ProfileWrapper>
     <NameWrapper>
         <p>Hi,</p>
