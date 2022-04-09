@@ -5,6 +5,7 @@ export const ProfileWrapper = styled.div `
     border-radius: 10px;
     margin: 0 10px;
     min-width: 100px;
+    justify-content: center;
 `;
 
 export const NameWrapper = styled.div `

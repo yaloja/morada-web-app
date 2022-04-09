@@ -3,14 +3,16 @@ import { IoThumbsUpSharp }  from "react-icons/io5"
 
     export const WelcomeMessage = () => (
 
-    <><WelcomeMessageWrapper>
-        <p class = "find">Find</p>
-    </WelcomeMessageWrapper>
-    <BestPlaceNearbyWrapper>
-        <p class = "bestplace">best place</p>
-        <p class = "nearby">nearby</p>
-        <IoThumbsUpSharp/>
-    </BestPlaceNearbyWrapper></>
+    <>
+        <WelcomeMessageWrapper>
+            <p className = "find">Find</p>
+        </WelcomeMessageWrapper>
+        <BestPlaceNearbyWrapper>
+            <p className = "bestplace">best place</p>
+            <p className = "nearby">nearby</p>
+            <IoThumbsUpSharp/>
+        </BestPlaceNearbyWrapper>
+    </>
 
 
 )

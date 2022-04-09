@@ -5,7 +5,27 @@ export const PropertyTypeButtonWrapper = styled.div `
     border-radius: 10px;
     min-width: 100px;
     margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     p {
         color: #4a148c
     }
+    &:hover {
+        background: #4a148c;
+        svg {
+            color: #fff;
+        }
+        p {
+            color: #fff;
+        }
+    }
 `;
+
+export const IconWrapper = styled.div `
+    margin-top: 10px;
+    svg {
+        font-size: 2em;
+        color: #4a148c
+    }
+`

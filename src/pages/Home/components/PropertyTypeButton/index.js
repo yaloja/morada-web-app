@@ -1,11 +1,11 @@
-import { PropertyTypeButtonWrapper } from "./styles";
-import { FaBuilding } from "react-icons/fa";
+import { IconWrapper, PropertyTypeButtonWrapper } from "./styles";
 
-
-export const PropertyTypeButton = ({icon, label}) => (
+export const PropertyTypeButton = ({icon:Icon, label}) => (
 
     <PropertyTypeButtonWrapper>
-        <FaBuilding/>
+        <IconWrapper>
+            <Icon/>
+        </IconWrapper>
         <p>{label}</p>
     </PropertyTypeButtonWrapper>
 

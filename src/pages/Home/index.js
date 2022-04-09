@@ -1,21 +1,22 @@
-import { Fragment } from "react";
 import { PropertyTypeButton } from "./components/PropertyTypeButton";
 import { ProfileInfo } from "./components/Profile";
 import { WelcomeMessage } from "./components/WelcomeMessage";
 import { PropertyTypesContainer, WelcomeMessageContainer } from "./styles";
 import { UserContainer } from "./styles";
-
+import { IoBusiness, IoHome, IoLocation, IoPrism, IoPower} from "react-icons/io5"
+import { PropertyCard } from "./components/PropertyCard";
+import { Page } from "../../components/Page";
 
 const PropertyTypes = [
-    { icon: 'icono-apartamento', label: 'Apartamento'},
-    { icon: 'icono-casa', label: 'Casa'},
-    { icon: 'icono-lote', label: 'Lote'},
-    { icon: 'icono-finca', label: 'Finca'},
-    { icon: 'icono-local', label: 'Local'},
+    { icon: IoBusiness, label: 'Apartamento'},
+    { icon: IoHome, label: 'Casa'},
+    { icon: IoLocation, label: 'Lote'},
+    { icon: IoPrism, label: 'Finca'},
+    { icon: IoPower, label: 'Local'},
 ]
 
 export const Home = () => (
-    <Fragment>
+    <Page>
         <h1>Home - morada</h1>
         <UserContainer>
             <ProfileInfo>
@@ -32,5 +33,9 @@ export const Home = () => (
                 <PropertyTypeButton icon={item.icon} label={item.label}/>)
         }
         </PropertyTypesContainer>
-    </Fragment>
+
+        <PropertyCard>
+
+        </PropertyCard>
+    </Page>
 )
