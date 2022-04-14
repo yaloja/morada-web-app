@@ -2,20 +2,21 @@ import { PropertyTypeLabel } from "../../../../components/PropertyTypeLabel";
 import { PropertyBusinessType } from "../../../../components/PropertyBusinessType"
 import { Subtitle } from "../../../../globalStyles";
 import { PropertyCardWrapper, PropertyCardImageWrapper, PropertyCardInfoWrapper } from "./styles";
+import { PropertyValue } from "../../../../components/PropertyValue";
 
-export const PropertyCard = () => (
+export const PropertyCard = ({photo, title, location, propertyType, businessType, value}) => (
     <PropertyCardWrapper>
         <PropertyCardImageWrapper>
-            <img alt="property image" src="https://images.ctfassets.net/8lc7xdlkm4kt/5XZ6f7kcqu0cVgTnFoFnLt/52ac8951ab8edd991e28b383a6eac830/61M2.jpg"/>
+            {photo}
         </PropertyCardImageWrapper>
         <PropertyCardInfoWrapper>
-            <h3>Apartamento en Laureles</h3>
+            <h3>{title}</h3>
             <Subtitle>
-                Medellin, Antioquia
+                {location}
             </Subtitle>
-            <PropertyTypeLabel></PropertyTypeLabel>
-            <PropertyBusinessType></PropertyBusinessType>
-            <p>$400.000</p>
+            <PropertyTypeLabel typeId={propertyType}></PropertyTypeLabel>
+            <PropertyBusinessType businessType={businessType}></PropertyBusinessType>
+            <PropertyValue propValue={value}></PropertyValue>
         </PropertyCardInfoWrapper>
     </PropertyCardWrapper>
 )

@@ -5,11 +5,7 @@ export const PropertyTypesContainer = styled.section `
     overflow-x: scroll;
     margin-bottom: 10px;
 `
-
-export const UserContainer = styled.section `
-    display: flex;
-`
-
-export const WelcomeMessageContainer = styled.section `
+export const PropertyCardsContainer = styled.section `
+    overflow-y: scroll;
     margin-bottom: 10px;
 `

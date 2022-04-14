@@ -9,9 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Subtitle = styled.p`
-   color: #C0C2D2;
+   color: #aaa;
    font-size: 1em;
    text-transform: capitalize;
-   //margin: 0;
    margin: 3px;
 `

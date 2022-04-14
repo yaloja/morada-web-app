@@ -5,7 +5,7 @@ export const PropertyBusinessTypeWrapper = styled.div `
     align-items: center;
     margin: 3px;
     svg {
-        color: #ccc;
+        color: gray;
         font-size: 1em;
     }
     p {

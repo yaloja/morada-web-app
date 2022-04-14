@@ -1,15 +1,12 @@
-import { NameWrapper, ProfileWrapper } from "./styles";
-import { IoPerson }  from "react-icons/io5"
-
+import { NameWrapper, ProfileInfoWrapper } from "./styles";
 export const ProfileInfo = () => (
 
-    <><ProfileWrapper>
-        <IoPerson/>
-    </ProfileWrapper>
-    <NameWrapper>
-        <p>Hi,</p>
-        <p class="name">Nombre</p>
-    </NameWrapper></>
-
+    <ProfileInfoWrapper>
+        <img alt="user image" src="https://images.ctfassets.net/8lc7xdlkm4kt/5XZ6f7kcqu0cVgTnFoFnLt/52ac8951ab8edd991e28b383a6eac830/61M2.jpg"/>
+        <NameWrapper>
+            <p>Hi,</p>
+            <p className = "name">Yarleidy Lopera Jaramillo</p>
+        </NameWrapper>
+    </ProfileInfoWrapper>
 
 )

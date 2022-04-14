@@ -4,6 +4,6 @@ import { PropertyBusinessTypeWrapper } from './styles'
 export const PropertyBusinessType = ({businessType}) => (
     <PropertyBusinessTypeWrapper>
         <IoPricetag></IoPricetag>
-        <p>Venta</p>
+        <p>{businessType}</p>
     </PropertyBusinessTypeWrapper>
 )

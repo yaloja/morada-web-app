@@ -1,27 +1,29 @@
 import styled from 'styled-components';
 
-export const ProfileWrapper = styled.div `
-    background-color: #f3e5f5;
+export const ProfileInfoWrapper = styled.div `
     border-radius: 10px;
-    margin: 0 10px;
+    margin: 10px 10px;
     min-width: 100px;
     justify-content: center;
+    display: flex;
+    img {
+        width: 10%;
+        border-radius: inherit;
+    }
+
 `;
 
 export const NameWrapper = styled.div `
-    background-color: #f3e5f5;
-    border-radius: 10px;
     margin: 0 10px;
     flex-grow: 1;
-   p {
-        font-size: 1.1em;
+    p {
+        font-size: 1em;
         color: gray;
-        height: 10px;
+        margin: 0px 10px;
     }
     .name {
-        font-size: 1.3em;
+        font-size: 1.1em;
         color: black;
         font-weight: 800;
-        height: 10px;
     }
 `;

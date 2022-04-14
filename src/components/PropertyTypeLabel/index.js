@@ -3,7 +3,7 @@ import { PropertyTypeLabelWrapper } from "./styles"
 export const PropertyTypeLabel = ({typeId}) => (
     <PropertyTypeLabelWrapper>
         <p>
-            Apartamento
+            {typeId}
         </p>
     </PropertyTypeLabelWrapper>
 )
