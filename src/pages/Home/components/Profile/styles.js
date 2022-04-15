@@ -18,7 +18,7 @@ export const NameWrapper = styled.div `
     flex-grow: 1;
     p {
         font-size: 1em;
-        color: gray;
+        color: #bbb;
         margin: 0px 10px;
     }
     .name {

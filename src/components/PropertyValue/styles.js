@@ -6,7 +6,7 @@ export const PropertyValueWrapper = styled.div `
     p {
         color: #0d26f2bd;
         margin: 0px;
-        font-size: 1.4em;
+        font-size: 1.3em;
         font-weight: bold;
     }
 `;
