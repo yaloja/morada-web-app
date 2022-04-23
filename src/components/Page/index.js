@@ -1,7 +1,15 @@
+import { Fragment } from "react";
+import { Menu } from "../Menu";
 import { PageWrapper } from "./styles";
 
 export const Page = (props) => (
-    <PageWrapper>
-        { props.children }
-    </PageWrapper>
+    <Fragment>
+        <PageWrapper>
+            { props.children }
+        </PageWrapper>
+        {
+            !props.hideMenu && <Menu/>
+        }
+
+    </Fragment>
 )

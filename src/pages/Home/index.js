@@ -5,6 +5,8 @@ import { PropertyTypesContainer, PropertyCardsContainer } from "./styles";
 import { IoBusiness, IoHome, IoLocation, IoPrism, IoPower} from "react-icons/io5"
 import { PropertyCard } from "./components/PropertyCard";
 import { Page } from "../../components/Page";
+import { Menu } from "../../components/Menu";
+import { PageTitle } from "../../globalStyles";
 
 const PropertyTypes = [
     { icon: IoBusiness, label: 'Apartamento'},
@@ -43,7 +45,7 @@ const Properties = [
 
 export const Home = () => (
     <Page>
-        <h1>Home - morada</h1>
+        <PageTitle>Home - morada</PageTitle>
         <ProfileInfo></ProfileInfo>
                   
         <WelcomeMessage></WelcomeMessage>
@@ -55,13 +57,10 @@ export const Home = () => (
         }
         </PropertyTypesContainer>
 
-        <PropertyCardsContainer>
-        {
-            Properties.map(item =>
-                <PropertyCard photo={item.photo} title={item.title} location={item.location} 
-                propertyType={item.propertyType} businessType={item.businesstype} value={item.value}/>)
-        }
-        </PropertyCardsContainer>
+        <PropertyCard/>
+        <PropertyCard/>
+        <PropertyCard/>
+        <PropertyCard/>
         
     </Page>
 )
