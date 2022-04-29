@@ -21,7 +21,7 @@ export const Account = () => {
 
     const UserUnAuthorized = () => (
         <div>
-            <h2>Usuario no autencicado</h2>
+            <h2>Usuario no autenticado</h2>
             <p>Debe iniciar sesion para acceder a su perfil</p>
             <hr/>
             <Button 

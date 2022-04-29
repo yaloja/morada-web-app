@@ -35,14 +35,7 @@ const Properties = [
 
 export const Property = () => (
     <Page>
-       <PropertyContainer>
-       {
-            Properties.map(item =>
-                <PropertyCompleteInfo photo={item.photo} title={item.title} location={item.location} 
-                propertyType={item.propertyType} businessType={item.businesstype} value={item.value} description={item.description}/>)
-        }
-       </PropertyContainer>
-        
+       <PropertyCompleteInfo/>
     </Page>
     
 )
