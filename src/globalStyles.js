@@ -1,6 +1,11 @@
 import styled, {createGlobalStyle} from "styled-components";
+import { MENU_HEIGHT } from "./constants/styles";
 
 export const GlobalStyle = createGlobalStyle`
+   *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
    body {
     margin: 0px;
     padding: 0px;
@@ -21,27 +26,49 @@ export const PageTitle = styled.h1`
    font-weight: 300;
 `;
 
+export const FooterFixed = styled.footer`
+   position: fixed;
+   bottom: ${MENU_HEIGHT + 5}px;
+   left: 0;
+   width: 100%;
+`;
+
 export const FormControl = styled.div`
    display: flex;
-   flex-direction: column;
    margin: 5px 0;
    border-radius: 6px;
    background-color: #f2f2f2;
+`;
+
+export const FormControlInput = styled.div`
+   flex: 1;
    label {
-      font-size: 0.95em;
+      display: block;
+      width: 100%;
+      font-size: 1em;
       color: #222;
-      font-weight: 500;
+      font-weight: 600;
+      margin: 5px;
    }
    input[type="email"], input[type="password"], input[type="text"], input[type="phone"] {
-      font-size: 1.1em;
-      padding: 5px 10px;
-      margin: 5px;
+      display: block;
+      width: 100%;
+      font-size: 1em;
       background-color: inherit;
+      border: none;
+      margin: 5px;
    }
    select {
-      font-size: 1.1em;
-      padding: 5px 10px;
-      margin: 5px;
+      display: block;
+      width: 100%;
+      font-size: 1em;
       background-color: inherit;
+      border: none;
+      margin: 5px;
    }
+`;
+
+export const FormControlAction = styled.div`
+   display: flex;
+   align-items: center;
 `;

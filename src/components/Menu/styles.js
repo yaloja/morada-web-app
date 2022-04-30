@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { MENU_HEIGHT } from '../../constants/styles';
 
 export const MenuWrapper = styled.div `
     border: 1px solid #ccc;
     width: 100%;
-    height: 80px;
+    height: ${MENU_HEIGHT}px;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -28,6 +29,7 @@ export const MenuItemWrapper = styled.section `
         font-size: 1.4em;
     }
     p {
+        color: #4a148c;
         margin: 5px 0px;
     }
     &:hover {
