@@ -20,22 +20,6 @@ const MenuCustomerItems = [
     }
 ];
 
-export const Menu = () => {
-    
-    const typeProfile = 2;
-
-    return(
-        <MenuWrapper>
-            {
-                typeProfile === 1 && MenuCustomerItems.map( item => <MenuItem {...item}/>)
-            }
-            {
-                typeProfile === 2 && MenuAdminItems.map( item => <MenuItem {...item}/>)
-            }
-        </MenuWrapper>
-    )
-};
-
 const MenuAdminItems = [
    
     {
@@ -54,3 +38,20 @@ const MenuAdminItems = [
         path: '/account'
     }
 ];
+
+export const Menu = () => {
+    
+    const typeProfile = 2;
+
+    return(
+        <MenuWrapper>
+            {
+                typeProfile === 1 && MenuCustomerItems.map( item => <MenuItem {...item}/>)
+            }
+            {
+                typeProfile === 2 && MenuAdminItems.map( item => <MenuItem {...item}/>)
+            }
+        </MenuWrapper>
+    )
+};
+
