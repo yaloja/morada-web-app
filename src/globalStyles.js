@@ -46,11 +46,11 @@ export const FormControlInput = styled.div`
       display: block;
       width: 100%;
       font-size: 1em;
-      color: #222;
+      color: #4a148c;
       font-weight: 600;
       margin: 5px;
    }
-   input[type="email"], input[type="password"], input[type="text"], input[type="phone"] {
+   input[type="email"], input[type="password"], input[type="text"], input[type="phone"], input[type="number"] {
       display: block;
       width: 100%;
       font-size: 1em;
@@ -62,6 +62,14 @@ export const FormControlInput = styled.div`
       display: block;
       width: 100%;
       font-size: 1em;
+      background-color: inherit;
+      border: none;
+      margin: 5px;
+   }
+   textarea {
+      display: block;
+      width: 100%;
+      font-size: 1.2em;
       background-color: inherit;
       border: none;
       margin: 5px;
