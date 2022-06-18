@@ -1,5 +1,5 @@
+import React from "react";
 import { Fragment } from "react"
-import { Link } from "react-router-dom"
 import { ButtonStyled, LinkStyled } from "./styles"
 
 export const Button = ( { label, onPress, linkTo }) => {

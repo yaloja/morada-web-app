@@ -1,8 +1,9 @@
+import React from "react";
 import { useState, useEffect } from "react"
 import { PropertyTypeButton } from "./components/PropertyTypeButton";
 import { ProfileInfo } from "./components/Profile";
 import { WelcomeMessage } from "./components/WelcomeMessage";
-import { PropertyTypesContainer, PropertyCardsContainer } from "./styles";
+import { PropertyTypesContainer } from "./styles";
 import { IoBusiness, IoHome, IoLocation, IoPrism, IoPower} from "react-icons/io5"
 import { PropertyCard } from "./components/PropertyCard";
 import { Page } from "../../components/Page";

@@ -1,3 +1,4 @@
+import React from "react";
 import { Fragment } from "react";
 import { GlobalStyle } from "./globalStyles";
 import { Navigation } from "./Navigation";

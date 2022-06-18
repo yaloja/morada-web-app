@@ -1,3 +1,4 @@
+import React from "react";
 import {IoHome, IoPerson, IoHeart, IoAddCircle} from 'react-icons/io5';
 import { MenuItem } from './MenuItem';
 import { MenuWrapper } from './styles';

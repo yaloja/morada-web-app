@@ -69,7 +69,8 @@ export const FormControlInput = styled.div`
    textarea {
       display: block;
       width: 100%;
-      font-size: 1.2em;
+      height: 65px;
+      font-size: 1.3em;
       background-color: inherit;
       border: none;
       margin: 5px;

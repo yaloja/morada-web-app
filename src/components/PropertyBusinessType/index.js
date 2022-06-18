@@ -1,3 +1,4 @@
+import React from "react";
 import {IoPricetag} from 'react-icons/io5'
 import { PropertyBusinessTypeWrapper } from './styles'
 

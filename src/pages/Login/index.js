@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react"
 import { Page } from "../../components/Page"
 import { Button } from "../../components/Button"
@@ -5,6 +6,7 @@ import { FormControl, FormControlInput, PageTitle, FormControlAction} from "../.
 import { Link } from "react-router-dom"
 import { ButtonIcon } from "../../components/ButtonIcon"
 import { IoEye, IoEyeOff} from 'react-icons/io5'
+import { requestHttp } from "../../utils/HttpRequest"
 
 
 export const Login = () => {
@@ -13,6 +15,24 @@ export const Login = () => {
 
     const tooglePasswordVisible = () => {
         setVisiblePass(!visiblePass);
+    }
+
+    const loginHandler = async () => {
+        try {
+            const data = {
+                email: "yaloj@gmail.com",
+                password: "Tomas2015."
+            };
+            const response = await requestHttp (
+                {
+                    endpoint: "/users/login",
+                    body: data
+                }
+            );
+            console.log(response);
+        } catch (error) {
+            console.log('error', error);
+        }
     }
 
     return (
@@ -36,7 +56,7 @@ export const Login = () => {
                     </FormControlAction>
                 </FormControl>
                 <br/> 
-                <Button label="Ingresar" onPress={ () => alert('Iniciar sesión')}></Button>
+                <Button label="Ingresar" onPress={ loginHandler }></Button>
             </form>
             <br/>
             <Link to='/signup'>Regístrate como usuario</Link> 

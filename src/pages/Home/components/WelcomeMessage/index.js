@@ -1,3 +1,4 @@
+import React from "react";
 import { WelcomeMessageWrapper, BestPlaceNearbyWrapper } from "./styles";
 import { IoThumbsUp }  from "react-icons/io5"
 import { Fragment } from "react";

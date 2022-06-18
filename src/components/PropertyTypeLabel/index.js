@@ -1,3 +1,4 @@
+import React from "react";
 import { PropertyTypeLabelWrapper } from "./styles"
 
 export const PropertyTypeLabel = ({typeId}) => (

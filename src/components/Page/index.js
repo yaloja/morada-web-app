@@ -1,3 +1,4 @@
+import React from "react";
 import { Fragment } from "react";
 import { Menu } from "../Menu";
 import { PageWrapper } from "./styles";

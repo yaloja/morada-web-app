@@ -1,4 +1,4 @@
-
+import React from "react";
 import { useState } from "react"
 import { Page } from "../../components/Page"
 import { PageTitle } from "../../globalStyles"
@@ -32,6 +32,13 @@ export const SignUp = () => {
                     </FormControlInput>
                 </FormControl>
                 
+                <FormControl>
+                    <FormControlInput>
+                        <label>Identificación</label>
+                        <input type="text"/>
+                    </FormControlInput>
+                </FormControl>
+
                 <FormControl>
                     <FormControlInput>
                         <label>Nombre completo</label>

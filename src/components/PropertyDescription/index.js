@@ -1,3 +1,4 @@
+import React from "react";
 import { PropertyDescriptionWrapper } from "./styles"
 
 export const PropertyDescription = ({description}) => (
