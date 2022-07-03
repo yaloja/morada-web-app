@@ -75,6 +75,10 @@ export const FormControlInput = styled.div`
       border: none;
       margin: 5px;
    }
+   span {
+        color: red;
+        font-size: 0.85em;
+    }
 `;
 
 export const FormControlAction = styled.div`
