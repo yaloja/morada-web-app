@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Page } from "../../components/Page"
 import { PageTitle, FooterFixed } from "../../globalStyles"
 import { Button } from "../../components/Button";
+import { UserContext } from "../../contexts/UserContext";
 
 export const Account = () => {
     
-    const isAuth = false;
+    const {user, setUser} = useContext(UserContext);
 
     const UserInfo = () => (
         <div>
-            <h3>Yarleidy Lopera Jaramillo</h3>
-            <h5>43974808</h5>
-            <p>yaloja@gmail.com</p>
+            <h3>{user.name}</h3>
+            <h5>{user.identification}</h5>
+            <h5>{user.phone}</h5>
+            <p>{user.email}</p>
             <hr />
             <FooterFixed>
                 <Button 
@@ -38,7 +40,7 @@ export const Account = () => {
         <Page>
             <PageTitle>Mi cuenta</PageTitle>
             {
-                isAuth ? <UserInfo/> : <UserUnAuthorized/>
+                user.isAuth ? <UserInfo/> : <UserUnAuthorized/>
             }
         </Page>
     )

@@ -1,11 +1,14 @@
 import React from "react";
-import { Fragment } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { UserContextStore } from "./contexts/UserContext";
 import { GlobalStyle } from "./globalStyles";
 import { Navigation } from "./Navigation";
 
 export const App = () => (
-    <Fragment>
-        <GlobalStyle/>
-        <Navigation/>
-    </Fragment>
+    <BrowserRouter>
+        <UserContextStore>
+                <GlobalStyle/>
+                <Navigation/>
+        </UserContextStore>
+    </BrowserRouter>
 )

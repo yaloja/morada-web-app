@@ -77,7 +77,7 @@ export const FormControlInput = styled.div`
    }
    span {
         color: red;
-        font-size: 0.85em;
+        font-size: 0.8em;
     }
 `;
 

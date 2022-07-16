@@ -2,12 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom"
 import { Page } from "../../components/Page";
-import {
-  FormControl,
-  FormControlInput,
-  FormControlAction,
-  PageTitle,
-} from "../../globalStyles";
+import { FormControl, FormControlInput, FormControlAction, PageTitle } from "../../globalStyles";
 import { Button } from "../../components/Button";
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { IoEye, IoEyeOff } from "react-icons/io5";
@@ -15,9 +10,11 @@ import { requestHttp } from "../../utils/HttpRequest";
 import { useForm } from "react-hook-form";
 import { showAlert, SW_ICON } from "../../utils/SwAlert";
 import { useNavigate } from "react-router-dom";
+import {setToken} from "../../utils/TokenLS"
 
 
 export const Login = () => {
+
   const [visiblePass, setVisiblePass] = useState(false);
   const navigate = useNavigate();
   const {
@@ -42,6 +39,8 @@ export const Login = () => {
         body: data,
       });
       console.log(response);
+      const {data: dataResponse} = response;
+      setToken(dataResponse.token);
       showAlert(
         "Bienvenido",
         "Validación correcta",

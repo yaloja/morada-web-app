@@ -73,7 +73,6 @@ export const SignUp = () => {
                         {...register("document", {required: true, pattern: /[0-9]+/, minLength: 3, maxLength: 20 })}
                         />
                         {errors.document && <span>* Valor invalido</span>}
-                        
                     </FormControlInput>
                 </FormControl>
 
