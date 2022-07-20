@@ -5,21 +5,23 @@ import { Subtitle } from "../../../../globalStyles";
 import { PropertyCardWrapper, PropertyCardImageWrapper, PropertyCardInfoWrapper } from "./styles";
 import { PropertyValue } from "../../../../components/PropertyValue";
 import { Link } from "react-router-dom";
+import { getStaticImage } from "../../../../utils/StaticImage";
+import { getCityZoneLabel } from "../../../../utils/getDataConstants";
 
-export const PropertyCard = ({key, photo, title, location, propertyType, businessType, value}) => (
+export const PropertyCard = (props) => (
     
-        <PropertyCardWrapper>
+        <PropertyCardWrapper to={`/property/${props._id}`}>
             <PropertyCardImageWrapper>
-            <img alt="imagen de la propiedad" src="https://image.wasi.co/eyJidWNrZXQiOiJzdGF0aWN3Iiwia2V5IjoiaW5tdWVibGVzXC9ncl92ZW5kb2FycmllbmRvX2xvY2FsX2NjX2d1YXltYXJfMTU5MDAzNjA4NC03MjgxXzU1NTkuanBnIiwiZWRpdHMiOnsibm9ybWFsaXNlIjp0cnVlLCJyb3RhdGUiOjAsInJlc2l6ZSI6eyJ3aWR0aCI6OTc5LCJoZWlnaHQiOjc0MywiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19"/>
+            <img alt="imagen de la propiedad" src={getStaticImage(props.mainImage)}/>
             </PropertyCardImageWrapper>
             <PropertyCardInfoWrapper>
-            <Link to='/Property'><h3>{title}</h3></Link>
+                <h3>{props.title}</h3>
                 <Subtitle>
-                    {location}
+                    {getCityZoneLabel(props.city, props.zone)}
                 </Subtitle>
-                <PropertyTypeLabel typeId={propertyType}></PropertyTypeLabel>
-                <PropertyBusinessType businessType={businessType}></PropertyBusinessType>
-                <PropertyValue propValue={value}></PropertyValue>
+                <PropertyTypeLabel typeId={props.propertyType}></PropertyTypeLabel>
+                <PropertyBusinessType businessType={props.businessType}></PropertyBusinessType>
+                <PropertyValue propValue={props.value}></PropertyValue>
             </PropertyCardInfoWrapper>
         </PropertyCardWrapper>
     

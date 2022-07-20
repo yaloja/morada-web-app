@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const PropertyCardWrapper = styled.div`
+export const PropertyCardWrapper = styled(Link)`
     border: 1px solid #ccc;
     border-radius: 12px;
     margin: 10px;
@@ -9,6 +10,10 @@ export const PropertyCardWrapper = styled.div`
     -moz-box-shadow: 5px 2px 7px 0px rgba(194,194,194,0.75);
     padding: 10px;
     display: flex;
+    text-decoration: none;
+    &:hover {
+        background: #f3e5f5;
+    }
 `;
 
 export const PropertyCardImageWrapper = styled.div`
@@ -25,5 +30,6 @@ export const PropertyCardInfoWrapper = styled.div`
     margin-left: 10px;
     h3 {
         margin: 0;
+        color: #222;
     }
 `;

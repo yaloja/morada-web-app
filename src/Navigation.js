@@ -55,7 +55,7 @@ export const Navigation = () => {
     return (
         <Routes>
                 <Route path = '/' element = {<Home/>}/>
-                <Route path = '/property' element = {<Property/>} />
+                <Route path = '/property/:idProperty' element = {<Property/>} />
                 <Route path = '/account' element = {<Account/>} />
                 <Route path = '/favorites' element = {<Favorites/>} />
                 <Route path = '/login' element = {<Login/>} />

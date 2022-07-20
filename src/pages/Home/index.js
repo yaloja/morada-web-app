@@ -59,7 +59,7 @@ export const Home = () => {
           
           <PropertyTypesContainer>
           {
-              PropertyTypes.map((item, key) => 
+              PropertyTypes.map((item, key) => (
                   <PropertyTypeButton 
                   selected={propertyTypeSelected===item.id}
                   id = {item.id} 
@@ -67,22 +67,17 @@ export const Home = () => {
                   label={item.label}
                   onPress={PropertyTypeHandler}
                   key={key}
-                  />)
+                  />))
           }
           </PropertyTypesContainer>
 {/* recorrer el array para cargar las propiedades */}
           <>
             {
-              properties.map((property,key) => 
+              properties.map((property,key) => (
                 <PropertyCard 
+                  {...property}
                   key={property._Id}
-                  photo={""}
-                  title={property.title}
-                  location={property.city}
-                  propertyType={property.propertyType} 
-                  businessType={property.businessType} 
-                  value={property.value}
-                />)
+                />))
             }
           </>
           
