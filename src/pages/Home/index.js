@@ -49,7 +49,7 @@ export const Home = () => {
         console.log('error', error);
     }
   }
-
+  if(properties != null) {
     return(
       <Page>
           <PageTitle>Home - morada</PageTitle>
@@ -73,14 +73,19 @@ export const Home = () => {
 {/* recorrer el array para cargar las propiedades */}
           <>
             {
-              properties.map((property,key) => (
+              properties.map((property, key) => (
                 <PropertyCard 
                   {...property}
-                  key={property._Id}
+                  key={key}
                 />))
             }
           </>
           
       </Page>
     )
+  } else {
+    return(
+      <p>Cargando propiedad...</p>
+  )
+  }
 }

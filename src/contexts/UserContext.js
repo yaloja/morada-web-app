@@ -2,13 +2,15 @@ import React from "react";
 import {createContext, useState} from 'react';
 
 const initialState = {
-    role: 0,
+    role: 1,
     typeId: '',
     identification: '',
     name: '',
     email: '',
     phone: '',
-    isAuth: false
+    _id: '',
+    isAuth: false,
+    userId: ''
 };
 
 export const UserContext = createContext(initialState);

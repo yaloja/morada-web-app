@@ -8,6 +8,7 @@ import { NotFound } from './pages/NotFound';
 import { Property } from './pages/Property';
 import { SignUp } from './pages/SignUp';
 import { AddProperty } from './pages/AddProperty';
+import { POCUploadImage } from './pages/POCUploadImage'
 import { getToken, removeToken } from "./utils/TokenLS";
 import { UserContext } from "./contexts/UserContext";
 import { HTTP_VERBS, requestHttp } from "./utils/HttpRequest";
@@ -43,7 +44,8 @@ export const Navigation = () => {
             identification: data.user.document,
             email: data.user.email,
             phone: data.user.phone,
-            isAuth: true
+            isAuth: true,
+            userId: data.user._id
           })
           console.log('data', data);
         } catch(error) {
@@ -61,6 +63,7 @@ export const Navigation = () => {
                 <Route path = '/login' element = {<Login/>} />
                 <Route path = '/signup' element = {<SignUp/>} />
                 <Route path = '/add-property' element = {<AddProperty/>} />
+                <Route path = '/pocuploadimage' element = {<POCUploadImage/>} />
                 <Route path = '*' element = {<NotFound/>} />
         </Routes>
     );

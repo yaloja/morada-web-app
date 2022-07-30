@@ -7,9 +7,11 @@ const ButtonIconStyle = styled.button`
     border-radius: 6px;
     width: 30px;
     height: 30px;
+    padding: 0;
+    margin: 0;
     svg {
         color: ${MAIN_COLOR};
-        font-size: 1.4em;
+        font-size: 1.7em;
     }
     &:hover {
         cursor: pointer;
@@ -20,8 +22,8 @@ const ButtonIconStyle = styled.button`
     }
 `;
 
-export const ButtonIcon = ({icon: Icon, onPress}) => (
-    <ButtonIconStyle type="button" onClick={onPress}>
+export const ButtonIcon = ({icon: Icon, onPress, disabled}) => (
+    <ButtonIconStyle type="button" onClick={onPress} disabled={disabled}>
         <Icon/>
     </ButtonIconStyle>
 )

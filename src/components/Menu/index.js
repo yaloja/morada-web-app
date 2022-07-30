@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import {IoHome, IoPerson, IoHeart, IoAddCircle} from 'react-icons/io5';
+import { UserContext } from "../../contexts/UserContext";
 import { MenuItem } from './MenuItem';
 import { MenuWrapper } from './styles';
 
@@ -42,15 +43,15 @@ const MenuAdminItems = [
 
 export const Menu = () => {
     
-    const typeProfile = 2;
+    const {user} = useContext(UserContext);
 
     return(
         <MenuWrapper>
             {
-                typeProfile === 1 && MenuCustomerItems.map( item => <MenuItem {...item}/>)
+                user.role === 1 && MenuCustomerItems.map( item => <MenuItem {...item}/>)
             }
             {
-                typeProfile === 2 && MenuAdminItems.map( item => <MenuItem {...item}/>)
+                user.role === 2 && MenuAdminItems.map( item => <MenuItem {...item}/>)
             }
         </MenuWrapper>
     )

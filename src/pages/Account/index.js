@@ -3,10 +3,24 @@ import { Page } from "../../components/Page"
 import { PageTitle, FooterFixed } from "../../globalStyles"
 import { Button } from "../../components/Button";
 import { UserContext } from "../../contexts/UserContext";
+import {removeToken} from "../../utils/TokenLS"
+import { showAlert, SW_ICON } from "../../utils/SwAlert";
+import { useNavigate } from "react-router-dom";
 
 export const Account = () => {
     
     const {user, setUser} = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const closeUserSession = (data) => {
+        try {
+            removeToken();
+            setUser({}); 
+            showAlert("Hasta pronto", "Se ha cerrado la sesion de forma correcta", SW_ICON.SUCCESS, () => { navigate('/')});
+        } catch (error) {
+            showAlert("Error", "Error al cerrar la sesion", SW_ICON.ERROR);
+          }
+      };
 
     const UserInfo = () => (
         <div>
@@ -18,7 +32,7 @@ export const Account = () => {
             <FooterFixed>
                 <Button 
                     label = "Cerrar sesion" 
-                    onPress={ () => { alert('cerrar sesion') } }
+                    onPress={ closeUserSession }
                 />
             </FooterFixed>
         </div>

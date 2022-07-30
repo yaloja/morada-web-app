@@ -4,9 +4,7 @@ import { PropertyBusinessType } from "../../../../components/PropertyBusinessTyp
 import { Subtitle } from "../../../../globalStyles";
 import { PropertyCardWrapper, PropertyCardImageWrapper, PropertyCardInfoWrapper } from "./styles";
 import { PropertyValue } from "../../../../components/PropertyValue";
-import { Link } from "react-router-dom";
 import { getStaticImage } from "../../../../utils/StaticImage";
-import { getCityZoneLabel } from "../../../../utils/getDataConstants";
 
 export const PropertyCard = (props) => (
     
@@ -17,7 +15,7 @@ export const PropertyCard = (props) => (
             <PropertyCardInfoWrapper>
                 <h3>{props.title}</h3>
                 <Subtitle>
-                    {getCityZoneLabel(props.city, props.zone)}
+                    {props.city.name}, {props.zone.name}
                 </Subtitle>
                 <PropertyTypeLabel typeId={props.propertyType}></PropertyTypeLabel>
                 <PropertyBusinessType businessType={props.businessType}></PropertyBusinessType>

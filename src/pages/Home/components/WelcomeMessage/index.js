@@ -7,11 +7,11 @@ import { Fragment } from "react";
 
     <Fragment>
         <WelcomeMessageWrapper>
-            <p className = "find">Find</p>
+            <p className = "find">Encuentra</p>
         </WelcomeMessageWrapper>
         <BestPlaceNearbyWrapper>
-            <p className = "bestplace">best place</p>
-            <p className = "nearby">nearby</p>
+            <p className = "bestplace">el mejor lugar</p>
+            <p className = "nearby">cerca a ti</p>
             <IoThumbsUp/>
         </BestPlaceNearbyWrapper>
     </Fragment>

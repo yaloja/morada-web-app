@@ -41,6 +41,7 @@ export const Login = () => {
       console.log(response);
       const {data: dataResponse} = response;
       setToken(dataResponse.token);
+      console.log("dataResponse", dataResponse);
       showAlert(
         "Bienvenido",
         "Validación correcta",
