@@ -1,89 +1,235 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Page } from "../../components/Page"
 import { PageTitle } from "../../globalStyles"
 import { Button } from "../../components/Button"
 import { FormControl, FormControlInput, FormControlRadio, PageSubTitle } from "../../globalStyles"
-import { POCUploadImage } from "../POCUploadImage"
+import { HTTP_VERBS, CONTENT_TYPES, requestHttp } from "../../utils/HttpRequest";
+import { showAlert, SW_ICON } from "../../utils/SwAlert";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export const AddProperty = () => {
 
-    return (
-        <Page>
-            <PageTitle>Agregar propiedad</PageTitle>
-            <FormControlInput>
-                <POCUploadImage></POCUploadImage>
-            </FormControlInput>
-            <br />
-            <br />
-            <form>
-                <PageSubTitle>Registrar datos de la propiedad</PageSubTitle>
-                <FormControl>
-                    <FormControlInput>
-                        <label>Tipo Propiedad</label>
-                        <select name="combo">
-                            <option value="0" selected></option>
-                            <option value="1">Apartamento</option>
-                            <option value="2">Casa</option>
-                            <option value="3">Lote</option>
-                            <option value="4">Finca</option>
-                            <option value="5">Local</option>
-                        </select>
-                    </FormControlInput>
-                </FormControl>
+    const [file, setFile] = useState(null);
 
-                <FormControl>
-                    <FormControlRadio>
-                        <input type="radio" name="businessType" value="1" required /><label for="Renta">Renta</label>
-                        <input type="radio" name="businessType" value="2" required /><label for="Venta">Venta</label>
-                    </FormControlRadio>
-                </FormControl>
+    const [mainImage, setMainImage] = useState(null);
 
-                <FormControl>
-                    <FormControlInput>
-                        <label>Título inmueble</label>
-                        <input type="text" />
-                    </FormControlInput>
-                </FormControl>
+    const [cities, setCities] = useState(null);
 
-                <FormControl>
-                    <FormControlInput>
-                        <label>Ciudad</label>
-                        <input type="text" />
-                    </FormControlInput>
-                </FormControl>
+    const [zones, setZones] = useState([]);
 
-                <FormControl>
-                    <FormControlInput>
-                        <label>Zona</label>
-                        <input type="text" />
-                    </FormControlInput>
-                </FormControl>
+    const navigate = useNavigate();
 
-                <FormControl>
-                    <FormControlInput>
-                        <label>Valor</label>
-                        <input type="number" />
-                    </FormControlInput>
-                </FormControl>
+    const fileSeletedHandler = (event) => {
+        const fileSelected = event.target.files[0];
+        setFile(fileSelected);
+    };
 
-                <FormControl>
-                    <FormControlInput>
-                        <label>Descripción general</label>
-                        <textarea type="text" />
-                    </FormControlInput>
-                </FormControl>
+    const uploadFileHandler = () => {
+        if (file) {
+            requestUploadFile(file);
+        } else {
+            showAlert("Error", "Debes seleccionar un archivo para cargar", SW_ICON.ERROR);
+        }
+    }
 
-                <FormControl>
-                    <FormControlInput>
-                        <label>Detalles adicionales</label>
-                        <textarea type="text" />
-                    </FormControlInput>
-                </FormControl>
+    const requestUploadFile = async (file) => {
+        try {
+            const formData = new FormData();
+            formData.append("propertyImage", file);
+            const response = await requestHttp({
+                endpoint: '/properties/upload',
+                contentType: CONTENT_TYPES.MULTIPART_FORM_DATA,
+                body: formData
+            });
+            showAlert("Archivo cargado", "El archivo fue cargado con exito", SW_ICON.SUCCESS);
+            console.log('response', response);
+            setMainImage(response.data.fileName);
+            console.log('mainImage', response.data.fileName);
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
 
+    useEffect(() => {
+        requestCities();
+    }, [])
+
+    const requestCities = async () => {
+        try {
+            const response = await requestHttp({
+                method: HTTP_VERBS.GET,
+                endpoint: '/cities',
+            });
+            setCities(response.data.cities);
+            console.log('cities', response.data.cities);
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
+
+    const requestZones = async (cityId) => {
+        try {
+            const response = await requestHttp({
+                method: HTTP_VERBS.GET,
+                endpoint: `/zones/cityZones/${cityId}`
+            });
+            setZones(response.data.zones);
+            console.log('zones', response.data.zones);
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
+
+    const {
+        register,
+        setValue,
+        formState: { errors, isValid },
+        handleSubmit
+    } = useForm({ mode: "onChange" });
+
+    const onChageChargeZones = (data) => {
+
+        console.log(data.target.value);
+        requestZones(data.target.value);
+    }
+
+    const onSubmitAddProperty = (data) => {
+        createPropertyRequest(data);
+        console.log("form data", data);
+        console.log("image", mainImage);
+    };
+
+    const createPropertyRequest = async (data) => {
+        try {
+            const response = await requestHttp({
+                endpoint: "/properties",
+                body: data,
+            });
+            console.log(response);
+            showAlert(
+                "Registro exitoso",
+                "Se ha agregado la nueva propiedad de foma exitosa",
+                SW_ICON.SUCCESS,
+                () => { navigate('/') }
+            );
+        } catch (error) {
+            console.log("error", error);
+            showAlert("Error", "Error en los datos de registro", SW_ICON.ERROR);
+        }
+    };
+
+    if (cities != null) {
+        return (
+            <Page>
+                <PageTitle>Agregar propiedad</PageTitle>
+                <FormControlInput>
+                    <PageSubTitle>Cargar imagen</PageSubTitle>
+                    <input
+                        type="file"
+                        accept="image/png, image?jpeg"
+                        onChange={fileSeletedHandler}
+                    />
+                    <br></br>
+                    <br></br>
+                    <Button
+                        type="button"
+                        label="Cargar imagen"
+                        onPress={uploadFileHandler} />
+                </FormControlInput>
                 <br />
-                <Button label="Agregar Inmueble" onPress={() => alert('Propiedad registrada')}></Button>
-            </form>
+                <br />
+                <form onSubmit={handleSubmit(onSubmitAddProperty)}>
+                    <PageSubTitle>Registrar datos de la propiedad</PageSubTitle>
+                    <FormControl>
+                        <FormControlInput>
+                            <label>Tipo Propiedad</label>
+                            <select name="combo" {...register("propertyType")}>
+                                <option value="1" defaultValue>Apartamento</option>
+                                <option value="2">Casa</option>
+                                <option value="3">Lote</option>
+                                <option value="4">Finca</option>
+                                <option value="5">Local</option>
+                            </select>
+                        </FormControlInput>
+                    </FormControl>
 
-        </Page>
-    );
+                    <FormControl>
+                        <FormControlRadio>
+                            <input type="radio" name="businessType" value="1" required {...register("businessType")} /><label for="Renta">Renta</label>
+                            <input type="radio" name="businessType" value="2" required {...register("businessType")} /><label for="Venta">Venta</label>
+                        </FormControlRadio>
+                    </FormControl>
+
+                    <FormControl>
+                        <FormControlInput>
+                            <label>Título inmueble</label>
+                            <input type="text" {...register("title", { required: true, pattern: /[a-zA-Z\t]+|(^$)/, minLength: 3, maxLength: 100 })} />
+                        </FormControlInput>
+                    </FormControl>
+
+                    <FormControl>
+                        <FormControlInput>
+                            <label>Ciudad</label>
+                            <select id="city" name="city" {...register("city")} onChange={onChageChargeZones}>
+                                <option value="" defaultValue>Seleccionar ciudad...</option>
+                                {
+                                    cities.map((item, key) => (
+                                        <option value={item._id}> {item.name} </option>))
+                                }
+                            </select>
+                        </FormControlInput>
+                    </FormControl>
+
+                    <FormControl>
+                        <FormControlInput>
+                            <label>Zona</label>
+                            <select id="zone" name="zone" {...register("zone")} onBlur ={() => { }}>
+                                <option value="" defaultValue>Seleccionar zona...</option>
+                                {
+                                    zones.map((item, key) => (
+                                        <option value={item._id}> {item.name} </option>))
+                                }
+                            </select>
+                        </FormControlInput>
+                    </FormControl>
+
+                    <FormControl>
+                        <FormControlInput>
+                            <label>Valor</label>
+                            <input type="number"
+                                {...register("value", { required: true, pattern: /^-?\d+(,\d{3})*(\.\d{1,2})?$/, minLength: 5, maxLength: 15 })} />
+                        </FormControlInput>
+                    </FormControl>
+
+                    <FormControl>
+                        <FormControlInput>
+                            <label>Descripción general</label>
+                            <textarea type="text" {...register("shortDescription", { required: true, pattern: /[a-zA-Z\t]+|(^$)/, minLength: 3, maxLength: 200 })} />
+                        </FormControlInput>
+                    </FormControl>
+
+                    <FormControl>
+                        <FormControlInput>
+                            <label>Detalles adicionales</label>
+                            <textarea type="text" {...register("description", { required: true, pattern: /[a-zA-Z\t]+|(^$)/, minLength: 3, maxLength: 1000 })} />
+                        </FormControlInput>
+                    </FormControl>
+                    <br />
+                    <Button
+                        disabled={!mainImage}
+                        type="submit"
+                        onPress={() => { }}
+                        onClick={setValue('mainImage', mainImage)}
+                        label="Agregar inmueble"
+                    />
+                </form>
+
+            </Page>
+        );
+    } else {
+        return (
+            <p>Cargando propiedad...</p>
+        )
+    }
 }
