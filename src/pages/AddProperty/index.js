@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Page } from "../../components/Page"
-import { PageTitle } from "../../globalStyles"
+import { FormControlAction, PageTitle, FormControl, FormControlInput, FormControlRadio, PageSubTitle } from "../../globalStyles"
 import { Button } from "../../components/Button"
-import { FormControl, FormControlInput, FormControlRadio, PageSubTitle } from "../../globalStyles"
 import { HTTP_VERBS, CONTENT_TYPES, requestHttp } from "../../utils/HttpRequest";
 import { showAlert, SW_ICON } from "../../utils/SwAlert";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { IoAdd } from "react-icons/io5";
+import { ButtonIcon } from "../../components/ButtonIcon";
 
 export const AddProperty = () => {
 
@@ -88,7 +89,7 @@ export const AddProperty = () => {
         handleSubmit
     } = useForm({ mode: "onChange" });
 
-    const onChageChargeZones = (data) => {
+    const onChangeChargeZones = (data) => {
 
         console.log(data.target.value);
         requestZones(data.target.value);
@@ -98,6 +99,15 @@ export const AddProperty = () => {
         createPropertyRequest(data);
         console.log("form data", data);
         console.log("image", mainImage);
+    };
+
+    const toogleAddCity = () => {
+        navigate('/add-city');
+    };
+    
+    const toogleAddZone = () => {
+        console.log("Add Zone")
+        navigate('/add-zone');
     };
 
     const createPropertyRequest = async (data) => {
@@ -144,8 +154,8 @@ export const AddProperty = () => {
                     <FormControl>
                         <FormControlInput>
                             <label>Tipo Propiedad</label>
-                            <select name="combo" {...register("propertyType")}>
-                                <option value="1" defaultValue>Apartamento</option>
+                            <select name="combo" {...register("propertyType", { required: true })}>
+                                <option value="1" defaultValue >Apartamento</option>
                                 <option value="2">Casa</option>
                                 <option value="3">Lote</option>
                                 <option value="4">Finca</option>
@@ -156,22 +166,28 @@ export const AddProperty = () => {
 
                     <FormControl>
                         <FormControlRadio>
-                            <input type="radio" name="businessType" value="1" required {...register("businessType")} /><label for="Renta">Renta</label>
-                            <input type="radio" name="businessType" value="2" required {...register("businessType")} /><label for="Venta">Venta</label>
+                            <input type="radio" name="businessType" value="2" required {...register("businessType", { required: true })} /><label for="Renta">Renta</label>
+                            <input type="radio" name="businessType" value="1" required {...register("businessType", { required: true })} /><label for="Venta">Venta</label>
+                            {errors.businessType === "required" && (
+                                <span>El campo Tipo negocio es requerido</span>
+                            )}
                         </FormControlRadio>
                     </FormControl>
 
                     <FormControl>
                         <FormControlInput>
                             <label>Título inmueble</label>
-                            <input type="text" {...register("title", { required: true, pattern: /[a-zA-Z\t]+|(^$)/, minLength: 3, maxLength: 100 })} />
+                            <input name="title" type="text" {...register("title", { required: true, pattern: /[a-zA-Z\t]+|(^$)/, minLength: 3, maxLength: 100 })} />
+                            {errors.title === "required" && (
+                                <span>El campo Título es requerido</span>
+                            )}
                         </FormControlInput>
                     </FormControl>
 
                     <FormControl>
                         <FormControlInput>
                             <label>Ciudad</label>
-                            <select id="city" name="city" {...register("city")} onChange={onChageChargeZones}>
+                            <select id="city" name="city" {...register("city")} onChange={onChangeChargeZones}>
                                 <option value="" defaultValue>Seleccionar ciudad...</option>
                                 {
                                     cities.map((item, key) => (
@@ -179,12 +195,18 @@ export const AddProperty = () => {
                                 }
                             </select>
                         </FormControlInput>
+                        <FormControlAction>
+                            <ButtonIcon
+                                icon={IoAdd}
+                                onPress={toogleAddCity}
+                            />
+                        </FormControlAction>
                     </FormControl>
 
                     <FormControl>
                         <FormControlInput>
                             <label>Zona</label>
-                            <select id="zone" name="zone" {...register("zone")} onBlur ={() => { }}>
+                            <select id="zone" name="zone" {...register("zone")} onBlur={() => { }}>
                                 <option value="" defaultValue>Seleccionar zona...</option>
                                 {
                                     zones.map((item, key) => (
@@ -192,6 +214,12 @@ export const AddProperty = () => {
                                 }
                             </select>
                         </FormControlInput>
+                        <FormControlAction>
+                            <ButtonIcon
+                                icon={IoAdd}
+                                onPress={toogleAddZone}
+                            />
+                        </FormControlAction>
                     </FormControl>
 
                     <FormControl>

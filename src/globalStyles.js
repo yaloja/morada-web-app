@@ -42,6 +42,7 @@ export const FooterFixed = styled.footer`
 export const FormControl = styled.div`
    display: flex;
    margin: 5px 0;
+   padding: 5px;
    border-radius: 6px;
    background-color: #f2f2f2;
    `;

@@ -12,6 +12,8 @@ import { POCUploadImage } from './pages/POCUploadImage'
 import { getToken, removeToken } from "./utils/TokenLS";
 import { UserContext } from "./contexts/UserContext";
 import { HTTP_VERBS, requestHttp } from "./utils/HttpRequest";
+import { AddCity } from "./pages/AddCity";
+import { AddZone } from "./pages/AddZone";
 
 export const Navigation = () => {
 
@@ -63,6 +65,8 @@ export const Navigation = () => {
                 <Route path = '/login' element = {<Login/>} />
                 <Route path = '/signup' element = {<SignUp/>} />
                 <Route path = '/add-property' element = {<AddProperty/>} />
+                <Route path = '/add-city' element = {<AddCity/>} />
+                <Route path = '/add-zone' element = {<AddZone/>} />
                 <Route path = '/pocuploadimage' element = {<POCUploadImage/>} />
                 <Route path = '*' element = {<NotFound/>} />
         </Routes>
